@@ -1,4 +1,4 @@
-//Setting up lists from dataset "Best Selling Video Games", for images, and descriptions
+//Setting up lists from dataset "Best Selling Video Games", for images, and descriptions 
 var titleList= getColumn("Best Selling Video Games", "Title");
 var saleList= getColumn("Best Selling Video Games", "Sales");
 var publisherList= getColumn("Best Selling Video Games", "Publisher");
