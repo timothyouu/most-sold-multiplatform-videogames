@@ -1,0 +1,220 @@
+//Setting up lists from dataset "Best Selling Video Games", for images, and descriptions
+var titleList= getColumn("Best Selling Video Games", "Title");
+var saleList= getColumn("Best Selling Video Games", "Sales");
+var publisherList= getColumn("Best Selling Video Games", "Publisher");
+var dateList= getColumn("Best Selling Video Games", "Initial release date");
+var platformList= getColumn("Best Selling Video Games", "Platforms");
+var gameImageList= ["https://image.api.playstation.com/vulcan/img/cfn/11307uYG0CXzRuA9aryByTHYrQLFz-HVQ3VVl7aAysxK15HMpqjkAIcC_R5vdfZt52hAXQNHoYhSuoSq_46_MT_tDBcLu49I.png","https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fgrand-theft-auto-v%2Fhome%2FGTAV_EGS_Artwork_1920x1080_Hero-Carousel_V06-1920x1080-1503e4b1320d5652dd4f57466c8bcb79424b3fc0.jpg","https://i.pcmag.com/imagery/reviews/03S9ZRW0TQcpCQLxKx4lUVT-35..v1598017825.png","https://image.konsolenkost.de/item/images/1002275/full/drop-103837-b5aba85dc9d0462f8d376c6f1de00d351e234.jpg","https://i.etsystatic.com/22503713/r/il/061eb5/4084834838/il_fullxfull.4084834838_4out.jpg","https://coagulopath.com/wp-content/uploads/2023/08/pokemon.jpg ","https://image.api.playstation.com/cdn/UP1004/CUSA03041_00/Hpl5MtwQgOVF9vJqlfui6SDB5Jl4oBSq.png","https://assets1.ignimgs.com/2019/01/17/terraria---button-1547745886957.jpg","https://www.liveabout.com/thmb/sdXHWzo7STs50CbbKqAtu6wDUxo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Elder-Scrolls-V-Skyrim-56a9c3893df78cf772aa569c.jpg","https://upload.wikimedia.org/wikipedia/en/8/80/Diablo_III_cover.png","https://m.media-amazon.com/images/M/MV5BMDU4ODc1M2UtODg3Ny00NDViLTkxNmQtMzMzZWM1NGRmYTNjXkEyXkFqcGdeQXVyODY5Njk4Njc@._V1_.jpg","https://m.media-amazon.com/images/M/MV5BN2NmOWZmM2EtZGI1Yi00ZDYxLTkxODEtOTMwNmQ0M2IxOWZiXkEyXkFqcGdeQXVyMTA0MTM5NjI2._V1_.jpg","https://i.ytimg.com/vi/rnPBWI9wGxU/maxresdefault.jpg","https://upload.wikimedia.org/wikipedia/en/0/02/CoD_Black_Ops_cover.png","https://assets-prd.ignimgs.com/2022/01/07/gta-4-button-char-v2-1641587906428.jpg","https://m.media-amazon.com/images/I/81FK5l2lXjL.jpg","https://upload.wikimedia.org/wikipedia/en/d/d4/FIFA18cover.png","https://ichef.bbci.co.uk/news/976/cpsprodpb/FB73/production/_119017346_sonicoldemblem1.jpg","https://cdn.mos.cms.futurecdn.net/JRUw8tFRrB3t4PGxRrdH4M.jpg","https://cdn2.unrealengine.com/Diesel%2Fproductv2%2Fborderlands-2%2Fhome%2FEGS_Borderlands2_GearboxSoftware_S5-1360x766-8546dab7d7968b51fae34f402d61c1f9ea1b6891.jpg","https://upload.wikimedia.org/wikipedia/en/3/32/Super_Mario_World_Coverart.png","https://upload.wikimedia.org/wikipedia/en/1/16/Froggercover.png","https://upload.wikimedia.org/wikipedia/en/0/0c/Lemmings-BoxScan.jpg","https://cs1.gtaall.com/screenshots/4dc09/2022-07/original/578df31d9bdc74fe120ca91b37072544cc05411e/1082486-2.jpg","https://m.media-amazon.com/images/M/MV5BYjRjZmFhZjctNjI0MC00MGI1LTk2N2UtZWU1ZTgyYWIwYWY2XkEyXkFqcGdeQXVyMTQ4NTcxNTI0._V1_FMjpg_UX1000_.jpg","https://image.api.playstation.com/cdn/UP0002/CUSA00018_00/ESjgStO8XPuUfJiDPJHSeNNEvj3nEcmI.png","https://m.media-amazon.com/images/I/61-w1fEPjdL._AC_UF1000,1000_QL80_.jpg",];
+var descriptionImageList= ["https://media.wired.com/photos/6477eb69f2de86183cf5b41e/master/pass/Plugging-ChatGPT-Into-Minecraft-Business.jpg","https://i.ytimg.com/vi/HqZXw5M6qQY/maxresdefault.jpg","https://cdn.vox-cdn.com/thumbor/WlKZKbLzTqzuGTgWJAq1DHijjSQ=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/10599151/pubg.jpg","https://m.media-amazon.com/images/I/71OWWCZNouL._AC_UF1000,1000_QL80_.jpg","https://www.giantbomb.com/a/uploads/scale_small/0/9560/238964-pokemon_yellow_gameplay.jpg","https://thereader.mitpress.mit.edu/wp-content/uploads/2020/11/pacman-lead-graphic.jpg","https://media.lesechos.com/api/v1/images/view/5bf41e288fe56f3bc001cc76/1280x720/06041362020-web-tete.jpg","https://gametrex.com/wp-content/uploads/2018/09/Terraria-Free-Download.jpg","https://media.wired.com/photos/5a8f7d06b4bf6c3e4d4058c0/master/w_1600%2Cc_limit/skyrim-0004.jpg","https://onlinekeys.nl/wp-content/uploads/2017/04/Diablo-III-GameKey-kopen.jpg","https://m.media-amazon.com/images/I/818RDSf8zQL._AC_UF1000,1000_QL80_.jpg","https://www.thumbculture.co.uk/wp-content/uploads/2021/05/Grand-Theft-Auto-San-Andreas-Header-1024x597.png","https://hips.hearstapps.com/hmg-prod/images/cod-modern-warfare-3-b-654e860a69023.jpg","https://www.pcgamesn.com/wp-content/sites/pcgamesn/2018/05/Black-Ops-4-weapons.jpg","https://cdn.wccftech.com/wp-content/uploads/2020/05/GTA4-ReShade-Ray-Tracing-1.png","https://images.kinguin.net/g/carousel-main-mobile/media/category/6/-/6-1024_145.jpg","https://media.gq.com/photos/59cabd1242744153498bb69d/16:9/w_1280,c_limit/fifa18.jpg","https://i.ytimg.com/vi/yyLK_R9sYJU/maxresdefault.jpg","https://www.dexerto.com/cdn-cgi/image/width=3840,quality=75,format=auto/https://editors.dexerto.com/wp-content/uploads/2023/02/18/warzone-222222.jpg","https://cdn.arstechnica.net/wp-content/uploads/2012/09/bl2_1-640x360.jpg","https://i.ebayimg.com/images/g/o3oAAOSwgNZhIW-u/s-l1600.jpg","https://www.classicgaming.cc/classics/frogger/images/frogger-screenshot.png","https://classicreload.com/sites/default/files/lemmings.png","https://gamingbolt.com/wp-content/uploads/2021/11/grand-theft-auto-the-trilogy-the-definitive-edition-pc-image-3-scaled.jpg","https://i.ytimg.com/vi/Na8rqq47gi0/sddefault.jpg","https://image.api.playstation.com/cdn/EP0002/CUSA00025_00/2wlU3wI26cn0Gk6OD0xuwRhny3I9l74v.png","https://www.denofgeek.com/wp-content/uploads/2018/01/super-mario-land-original-gameboy-spaceship.png",];
+var descriptionList = ["Minecraft is a sandbox game released in 2011 by Mojang Studios, Minecraft is the number one best selling game in the world. The game can be played in multiplayer or singleplayer and the objectives are to build, mine, and craft.","Grand Theft Auto V (aka GTA 5) is an action-adventure game released in 2013 by Rockstar Studios, GTA V is the number two best selling game. Players can engage in many illegal activities with the three main protagonists.","Players Unknown Battlegrounds (aka PUBG) is a battle royale game released in 2017 by Krafton. Players are parachuted onto an island where they all have to scavenge for weapons and equipment and kill each other until the last player remains.","Super Mario Bros is a platform game released in 1985 by Nintendo. Players control Mario or Luigi to traverse the mushroom kingdom in order to save Princess Peach from Bowser using power ups and avoiding enemies on the way.","Pokemon R/B/G/Y are role-playing games released in 1996 by Nintendo. Players explore the Kanto region and collect pokemon to defeat trainers, gym leaders, and eventually become the champion.","Pac-Man is a maze-action video game released in 1980 by Namco. The player controls Pac-Man where your objective is to eat all the dots in the maze before losing all three of your lives from four colored ghosts chasing you.","Red Dead Redemption 2 is an action-adventure game released in 2018 by Rockstar Games, it’s the third game in the Red Dead series and is set in a fictionalized 1899 U.S, Wild West where the player controls Arthur Morgan, the player can do many things in it’s free-roam open world.","Terraria is a 2D sandbox game released in 2011 by Re-Logic. Players can do many things like explore, build, mine, craft, and many more. It can also be played in multiplayer mode. Players progress through the game and defeat many enemies and bosses.","The Elder Scrolls V: Skyrim is an action-role playing game released in 2011 by Bethesda Softworks. The player controls the Dragonborn to progress through their journey on their quest to defeat Alduin the Planet-Eater, over the course of the game, the player completes many quests and enhances their gear.","Diablo III is a hack and slash action role-playing game released in 2012 by Blizzard Entertainment. It is a sequel to Diablo II where it takes place 20 years after. The player has to save the world from the forces of hell, by choosing a class, leveling up, and acquiring better equipment.","The Witcher 3: Wild Hunt is an action-role playing game released in 2015 by CD Projekt, and it is the third installment in the Witcher series. The player controls Geralt who is a monster slayer by hire and is on the search for his adopted daughter.","Grand Theft Auto San Andreas is an action-adventure game released in 2004 by Rockstar Games. We follow the character of CJ who comes home to his mother’s murder and attempts to re-establish his old gang, clashes with cops and unravels the truth of his mother’s murder","Call of Duty: Modern Warfare 3 is a first person shooter game released in 2011 by Activision. It is the sequel to Call of Duty: Modern Warfare 2, which follows Task Force 141 as they hunt down Vladimir Makarov. In multiplayer, players fight each other in teams and wind depending on the game mode.","Call of Duty: Black Ops is a first person shooter game released in 2010 by Activision. The game centers around CIA operative Alex Mason as he tries to stop Soviet sleeper agents from deploying chemical weapons in the U.S. The multiplayer mode has players fight against each other in different game modes on 14 playable maps.","Grand Theft Auto IV is an action-adventure game released in 2008 by Rockstar Games. The story follows a war veteran, Niko Bellic, as he tries to escape his past from high-profile criminals. The game allows players to freely roam in Liberty City.","Call of Duty: Black Ops II is a first person shooter game released in 2012 by Activision. It is the sequel to Black Ops where we switch control between Alex Mason and Frank Woods and . It can still be played in multiplayer where you kill other players in different game modes.","FIFA 18 is a football simulation game released in 2017 by Electronic Arts. It is a sequel to FIFA 17 where we continue the story of Alex Hunter as he tries to make a name for himself in the football world. You can also play in multiplayer mode with other players to participate in online football games.","Sonic the Hedgehog is a platform game released in 1991 by Sega. Players control Sonic who can run at near supersonic speeds. He is on a quest to defeat Dr. Robotnik and gameplay consists of collecting rings and jumping/attacking.","Call of Duty: Modern Warfare 2 is a first person shooter game released in 2009 by Activision. The single player campaign follows task force 141, their goal is to hunt down Vladimir Makarov. Multiplayer mode consists of players battling each other in team deathmatch or team-based games on many different maps.","Borderlands 2 is an action role playing first person shooter game released in 2012 by 2K Games. As the sequel to Borderlands, it takes place 5 years after on the planet Pandora. Two factions must team up to defeat Handsome Jack. Players can complete quests and explore the world, and can be played in multiplayer.","Super Mario World is a platform video game released in 1990 by Nintendo. Mario is on a quest to save Princess Peach against Bowser and the Koopas, gameplay consists of jumping over enemies and collecting power ups to defeat enemies.","Frogger is an arcade action game released in 1981 by Sega. The objective of the game is to guide five different frogs to their respective homes by dodging traffic and crossing a river by jumping on logs and alligators.","Lemmings is a puzzle-strategy game released in 1991 by Psygnosis. The objective of the game is to guide a bunch of lemmings across obstacles to an exit. Many skills are used for eight lemmings to save the rest.","Grand Theft Auto: Vice City is an action-adventure game released in 2002 by Rockstar Games. It’s set in 1986, the story follows Tommy Vercetti’s rise to power after being released from prison. He is then caught up in an ambushed drug deal, and afterwards he builds a criminal empire.","Super Mario Bros. 3 is a platform game released in 1988 by Nintendo. The player controls either Mario or Luigi and they save Princess Peach and the other seven rulers from Bowser. Players must step on enemies to defeat them and obtain items that grant them magical powers to defeat enemies more efficiently.","Call of Duty: Ghosts is a first person shooter game released in 2013 by Activision. The player controls Logan Walker and follows the nuclear destruction of the Middle East, and Walker and his team are after Gabriel T. Rorke. The multiplayer mode contains many game modes for players to fight each other.","Super Mario Land is a platform game released in 1989 by Nintendo. Mario purses Princess Daisy in Sarasaland, where he has to defeat many Koopas by jumping on them with the final boss being Tatanga."];
+
+//Setting up variable that stores index number
+var gameIndex= 0;
+var pastIndex= 0;
+
+//Setting up filtered lists
+var filteredTitleList= [];
+var filteredSaleList= [];
+var filteredDateList= [];
+var filteredPublisherList= [];
+
+//Button will be englarged when mouse over and unenlarge when mouse out for all buttons 
+//startButton
+onEvent("startButton", "mouseover", function( ) {
+  setProperty("startButton", "border-width", 2);
+});
+onEvent("startButton", "mouseout", function( ) {
+  setProperty("startButton", "border-width", 0);
+});
+//randomizeButton
+onEvent("randomizeButton", "mouseover", function( ) {
+  setProperty("randomizeButton", "border-width", 2);
+});
+onEvent("randomizeButton", "mouseout", function( ) {
+  setProperty("randomizeButton", "border-width", 0);
+});
+//homeButton1
+onEvent("homeButton1", "mouseover", function( ) {
+  setProperty("homeButton1", "width", 50);
+  setProperty("homeButton1", "height", 50);
+  setProperty("homeButton1", "x", 5);
+  setProperty("homeButton1", "y", 5);
+});
+onEvent("homeButton1", "mouseout", function( ) {
+  setProperty("homeButton1", "width", 40);
+  setProperty("homeButton1", "height", 40);
+  setProperty("homeButton1", "x", 10);
+  setProperty("homeButton1", "y", 10);
+});
+//homeButton2
+onEvent("homeButton2", "mouseover", function( ) {
+  setProperty("homeButton2", "width", 50);
+  setProperty("homeButton2", "height", 50);
+  setProperty("homeButton2", "x", 5);
+  setProperty("homeButton2", "y", 5);
+});
+onEvent("homeButton2", "mouseout", function( ) {
+  setProperty("homeButton2", "width", 40);
+  setProperty("homeButton2", "height", 40);
+  setProperty("homeButton2", "x", 10);
+  setProperty("homeButton2", "y", 10);
+});
+//infoButton
+onEvent("infoButton", "mouseover", function( ) {
+  setProperty("infoButton", "width", 50);
+  setProperty("infoButton", "height", 50);
+  setProperty("infoButton", "x", 265);
+  setProperty("infoButton", "y", 5);
+});
+onEvent("infoButton", "mouseout", function( ) {
+  setProperty("infoButton", "width", 40);
+  setProperty("infoButton", "height", 40);
+  setProperty("infoButton", "x", 270);
+  setProperty("infoButton", "y", 10);
+});
+//backButton
+onEvent("backButton", "mouseover", function( ) {
+  setProperty("backButton", "width", 50);
+  setProperty("backButton", "height", 50);
+  setProperty("backButton", "x", 5);
+  setProperty("backButton", "y", 405);
+});
+onEvent("backButton", "mouseout", function( ) {
+  setProperty("backButton", "width", 40);
+  setProperty("backButton", "height", 40);
+  setProperty("backButton", "x", 10);
+  setProperty("backButton", "y", 410);
+});
+
+//Sends user to the gameScreen and plays sound when clicked
+onEvent("startButton", "click", function( ) {
+  setScreen("gameScreen");
+  playSound("sound://category_achievements/bubbly_game_achievement_sound.mp3", false);
+});
+
+//Sends user to the infoScreen and plays sound when clicked
+onEvent("infoButton", "click", function( ) {
+  setScreen("infoScreen");
+  playSound("sound://category_achievements/lighthearted_bonus_objective_4.mp3", false);
+});
+
+//Sends user back to the gameScreen and plays sound when clicked
+onEvent("backButton", "click", function( ) {
+  setScreen("gameScreen");
+  playSound("sound://category_achievements/retro_game_classic_power_up_3.mp3", false);
+});
+
+//Sends user back to the homeScreen and plays sound when clicked
+onEvent("homeButton1", "click", function( ) {
+  setScreen("homeScreen");
+  playSound("sound://category_achievements/vibrant_game_postive_achievement_2.mp3", false);
+});
+onEvent("homeButton2", "click", function( ) {
+  setScreen("homeScreen");
+  playSound("sound://category_achievements/vibrant_game_postive_achievement_2.mp3", false);
+});
+
+//Calling the updateScreen function
+onEvent("randomizeButton", "click", function( ) {
+  updateScreen();
+});
+
+//Filtering lists based on the top video games that are multi-platform
+//Randomly chooses an index number and rolls again if same index number as previous
+//Outputs the sale, publisher, images, title, date, and description
+//for the corresponding game
+//Stops ongoing sounds and plays sound
+function updateScreen() {
+  stopSound("sound://default.mp3");
+  playSound("sound://category_hits/puzzle_game_magic_item_unlock_5.mp3", false);
+  
+  filteredTitleList= [];
+  filteredSaleList= [];
+  filteredDateList= [];
+  filteredPublisherList= [];
+  
+  for (var i = 0; i < titleList.length; i++) {
+    if(platformList[i] == "Multi-platform"){
+      appendItem(filteredTitleList, titleList[i]);
+      appendItem(filteredSaleList, saleList[i]);
+      appendItem(filteredDateList, dateList[i]);
+      appendItem(filteredPublisherList, publisherList[i]);
+    }
+  }
+  
+while (gameIndex == pastIndex) {
+    gameIndex = randomNumber(0, filteredTitleList.length-1);
+  }
+  pastIndex = gameIndex;
+
+  setProperty("gameTitle1","text",filteredTitleList[gameIndex]);
+  setProperty("gameImage1","image",gameImageList[gameIndex]);
+  setProperty("salesOutput","text","Sales:" + "\n" + filteredSaleList[gameIndex] + " copies");
+  setProperty("publisherOutput","text","Publisher:" + "\n" + filteredPublisherList[gameIndex]);
+  setProperty("dateOutput","text","Release Date: " + filteredDateList[gameIndex]);
+  setProperty("gameTitle2","text",filteredTitleList[gameIndex]);
+  setProperty("gameImage2","image",descriptionImageList[gameIndex]);
+  setProperty("descriptionOutput","text",descriptionList[gameIndex]);
+}
+
+//credits:
+//homeScreen:
+//Video Game- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gq-magazine.co.uk%2Farticle%2Fbest-video-games-all-time&psig=AOvVaw0LE8facMe5X-0hXsg4NkcQ&ust=1706404431007000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOj6loGy_IMDFQAAAAAdAAAAABA
+
+//gameScreen:
+//Minecraft- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.playstation.com%2Fen-us%2Fgames%2Fminecraft%2F&psig=AOvVaw0T73xlxonCSzkVVOE8hkIe&ust=1706404542352000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMCf-7Wy_IMDFQAAAAAdAAAAABAD 
+//Grand Theft Auto V- https://www.google.com/url?sa=i&url=https%3A%2F%2Fstore.epicgames.com%2Fen-US%2Fp%2Fgrand-theft-auto-v&psig=AOvVaw1aiVu0qdnNY4bKNyxdtn4R&ust=1706404636439000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMCZ8-Ky_IMDFQAAAAAdAAAAABAD 
+//PlayerUnknown’s Battlegrounds- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pcmag.com%2Freviews%2Fplayerunknowns-battlegrounds-for-pc&psig=AOvVaw3NYlNcqd28-tnyWzQg4-04&ust=1706404834828000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNCXwcGz_IMDFQAAAAAdAAAAABAI 
+//Super Mario Bros.- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.konsolenkost.de%2Fa-1002275%2F&psig=AOvVaw0ji7p3aq98ZZtTUsCEHljs&ust=1706404920089000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIDy7eyz_IMDFQAAAAAdAAAAABAD 
+//Pokemon Red/Green/Blue/Yellow- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.etsy.com%2Fhk-en%2Flisting%2F823814240%2Fpokemon-yellow-green-blue-red-reproduced&psig=AOvVaw0o-68pF1527P4TZjxtMXuQ&ust=1706405219148000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOidsvm0_IMDFQAAAAAdAAAAABAD 
+//Pac-Man- https://www.google.com/url?sa=i&url=https%3A%2F%2Fcoagulopath.com%2Fcategory%2Freviews%2Fgames%2F&psig=AOvVaw3VY7eaEYgCWLWIkWlfPgmw&ust=1706405239842000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIjRt4O1_IMDFQAAAAAdAAAAABAD 
+//Red Dead Redemption 2- https://www.google.com/url?sa=i&url=https%3A%2F%2Fstore.playstation.com%2Fen-us%2Fproduct%2FUP1004-CUSA03041_00-REDEMPTIONFULL02&psig=AOvVaw1Ehufer76mfXcJz0O7NwQ2&ust=1706405256815000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMDKqYu1_IMDFQAAAAAdAAAAABAD 
+//Terraria- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ign.com%2Fgames%2Fterraria&psig=AOvVaw0xcaZykMfSBy5gB70UBLWn&ust=1706405271904000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKizyJK1_IMDFQAAAAAdAAAAABAD 
+//The Elder Scrolls V:Skyrim-https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.liveabout.com%2Felder-scrolls-v-skyrim-cheats-pc-3396224&psig=AOvVaw1CmgXaUYAsZBX_6KDghPt9&ust=1706405288060000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNCDhJq1_IMDFQAAAAAdAAAAABAD 
+//Diablo III - https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FDiablo_III&psig=AOvVaw2O1XGOA8FRcdZsOlFO1e8_&ust=1706405304920000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOizg6K1_IMDFQAAAAAdAAAAABAD 
+//The Witcher 3- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.imdb.com%2Ftitle%2Ftt2993508%2Fplotsummary%2F&psig=AOvVaw1CvIOv6mayQgcu0TciM3tQ&ust=1706405328057000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLCvr621_IMDFQAAAAAdAAAAABAD 
+//Grand Theft Auto: San Andreas- https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.imdb.com%2Ftitle%2Ftt0383385%2Flocations%2F&psig=AOvVaw3uSiZbwR93_wuQncUHBiwT&ust=1706405347511000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNDxsra1_IMDFQAAAAAdAAAAABAD 
+//Call of Duty: Modern Warfare 3- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DrnPBWI9wGxU&psig=AOvVaw3-JllS8RSynozCQsyDr_ha&ust=1706405362136000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOC7yb21_IMDFQAAAAAdAAAAABAD
+//Call of Duty: Black Ops- https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FCall_of_Duty%3A_Black_Ops&psig=AOvVaw23XenFLv76OnZ4mGywq5eh&ust=1706405382591000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNi7nse1_IMDFQAAAAAdAAAAABAD 
+//Grand Theft Auto IV- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ign.com%2Fgames%2Fgrand-theft-auto-iv%2Ftrailers&psig=AOvVaw1h2ZJKLBEh99NgJKn_vTwz&ust=1706405396877000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNjR0s-1_IMDFQAAAAAdAAAAABAD 
+//Call of Duty:Black Ops II-https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FCall-Duty-Black-Ops-II-PC%2Fdp%2FB007XVTR12&psig=AOvVaw0H0l0NWk5Ij0KVurWWQsnQ&ust=1706405434015000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKiCkuG1_IMDFQAAAAAdAAAAABAD 
+//FIFA 18- https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFIFA_18&psig=AOvVaw2QVKnXPsntQcajvq5vOhSo&ust=1706405466808000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOD47--1_IMDFQAAAAAdAAAAABAD 
+//Sonic the Hedgehog- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.bbc.co.uk%2Fnews%2Fnewsbeat-57566746&psig=AOvVaw0kDlZW0fwR-mxqQXVcZ89_&ust=1706405543359000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNi2iZS2_IMDFQAAAAAdAAAAABAD 
+//Call of Duty: Modern Warfare 2- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.tomsguide.com%2Freviews%2Fcall-of-duty-modern-warfare-2&psig=AOvVaw3n8wjTKXHg1eJjyzP-lsZN&ust=1706405564011000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMCNpZ62_IMDFQAAAAAdAAAAABAH 
+//Borderlands 2- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.unrealengine.com%2Fmarketplace%2Fen-US%2Fproduct%2Fpixel-2d-complete-2d-engine-for-unreal&psig=AOvVaw3X-iUbB3coUoVtdvg_Jb2S&ust=1706405586254000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOCj_qu2_IMDFQAAAAAdAAAAABAH 
+//Super Mario World- https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSuper_Mario_World&psig=AOvVaw00DkwS-UsX45XDDmSbeIDf&ust=1706405624433000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPC5urq2_IMDFQAAAAAdAAAAABAD 
+//Frogger- https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFrogger_%25281997_video_game%2529&psig=AOvVaw04xg-blEuctrqdtYtRvUZH&ust=1706405636829000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOjltsC2_IMDFQAAAAAdAAAAABAD 
+//Lemmings- https://www.google.com/url?sa=i&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FLemmings_%2528video_game%2529&psig=AOvVaw00c9fJNYjS1R8sY1irfCK_&ust=1706405656301000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNjj1cm2_IMDFQAAAAAdAAAAABAD 
+//Grand Theft Auto: Vice City- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gtaall.com%2Fgta-vice-city-definitive-edition%2Fmods%2F191071-updated-intro.html&psig=AOvVaw1PGV935nLJLO3YTLv8xluG&ust=1706405672372000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIi6nNG2_IMDFQAAAAAdAAAAABAD 
+//Super Mario Bros 3- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.imdb.com%2Ftitle%2Ftt0098762%2F&psig=AOvVaw1vD6iTLyj_mYEHE-d88LL_&ust=1706405683832000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKj119a2_IMDFQAAAAAdAAAAABAD 
+//Call of Duty: Ghosts- https://www.google.com/url?sa=i&url=https%3A%2F%2Fstore.playstation.com%2Fen-us%2Fproduct%2FUP0002-CUSA00018_00-B000000000000343%3Fscope%3D516&psig=AOvVaw1QEnzQATCmSohsgsjgIOOq&ust=1706405697234000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNCL0922_IMDFQAAAAAdAAAAABAD 
+//Super Mario Land-https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FSuper-Mario-Land-Pc%2Fdp%2FB00002ST28&psig=AOvVaw0F71hVvjLYTtfdArfQBVQf&ust=1706405712735000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMjVwuS2_IMDFQAAAAAdAAAAABAD 
+
+//infoScreen:
+//Minecraft- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wired.com%2Fstory%2Ffast-forward-gpt-4-minecraft-chatgpt%2F&psig=AOvVaw2b6vDtovpehPnPUJZkvLct&ust=1706404574776000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJDiusWy_IMDFQAAAAAdAAAAABAD 
+//Grand Theft Auto V- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DHqZXw5M6qQY&psig=AOvVaw1aiVu0qdnNY4bKNyxdtn4R&ust=1706404636439000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCMCZ8-Ky_IMDFQAAAAAdAAAAABB1 
+//PlayerUnknown’s Battlegrounds- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.polygon.com%2F22882099%2Fpubg-developers-lawsuit-apple-google-garena-clones&psig=AOvVaw3aqi2T9ZB-teViyASbLfGD&ust=1706404899964000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjxmeGz_IMDFQAAAAAdAAAAABAD 
+//Super Mario Bros.- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FUSAOPOLY-Brothers-Nintendo-Artwork-Not-Specified%2Fdp%2FB0751Q1ZQC&psig=AOvVaw1dGxNrBvoaELH4lSgOLyf7&ust=1706404940326000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPj7m_Sz_IMDFQAAAAAdAAAAABAD 
+//Pokemon Red/Green/Blue/Yellow- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.giantbomb.com%2Fpokemon-redblue%2F3030-3966%2F&psig=AOvVaw273xueSx7Zyfz6D5tHyogf&ust=1706405820538000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOCbipi3_IMDFQAAAAAdAAAAABAD 
+//Pac-Man- https://www.google.com/url?sa=i&url=https%3A%2F%2Fthereader.mitpress.mit.edu%2Fhow-pac-man-revolutionized-gaming%2F&psig=AOvVaw3i8q5BwKJmq3LDQxp5mWDw&ust=1706405832977000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNCjhZ63_IMDFQAAAAAdAAAAABAD 
+//Red Dead Redemption 2- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.lesechos.fr%2Ftech-medias%2Fhightech%2Fjeux-video-sortie-de-red-dead-redemption-2-sur-fond-de-polemiques-sociales-143205&psig=AOvVaw3as6gW4LZPgiLqsM7blney&ust=1706405845540000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLCvtaW3_IMDFQAAAAAdAAAAABAD 
+//Terraria- https://www.google.com/url?sa=i&url=https%3A%2F%2Fgametrex.com%2Fterraria-free-download%2F&psig=AOvVaw1f5U8voynstQv-TL7sNfyj&ust=1706405863698000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKjhqa23_IMDFQAAAAAdAAAAABAD 
+//The Elder Scrolls V:Skyrim- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.wired.com%2F2011%2F06%2Fskyrim-e3-hands-on%2F&psig=AOvVaw1zFURtAtxlkqdVJXBc9HOZ&ust=1706405879337000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOCR4LS3_IMDFQAAAAAdAAAAABAD 
+//Diablo III - https://www.google.com/url?sa=i&url=https%3A%2F%2Fonlinekeys.nl%2Fproduct%2Fdiablo-3%2F&psig=AOvVaw2KkOWCuwWlqnoyxMx6VpAm&ust=1706405893954000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjT8bu3_IMDFQAAAAAdAAAAABAD  
+//The Witcher 3- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.com%2FWitcher-Wild-Hunt-Complete-Xbox%2Fdp%2FB0BQWPPR7G&psig=AOvVaw0xntm1nC_QS5AaBPmLp056&ust=1706405909927000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJiE7MK3_IMDFQAAAAAdAAAAABAD 
+//Grand Theft Auto: San Andreas- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.thumbculture.co.uk%2Fgrand-theft-auto-san-andreas-a-retrospective-review-heading-home&psig=AOvVaw3ASCWamgzNhaZlcVdAG93e&ust=1706405922561000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLj3tcu3_IMDFQAAAAAdAAAAABAD 
+//Call of Duty: Modern Warfare 3- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.digitalspy.com%2Ftech%2Fa45810757%2Fcall-of-duty-modern-warfare-3-controversy%2F&psig=AOvVaw0zuaSU4p_gSUOUTstQlF1W&ust=1706405943941000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJDzh9O3_IMDFQAAAAAdAAAAABAD 
+//Call of Duty: Black Ops- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pcgamesn.com%2Fcall-of-duty-black-ops-4%2Fcall-of-duty-black-ops-4-weapons-every-gun&psig=AOvVaw3dM9tt8MCHfmoLJyQi8KG0&ust=1706405954554000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKiZvdi3_IMDFQAAAAAdAAAAABAD 
+//Grand Theft Auto IV- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwccftech.com%2Fgrand-theft-auto-iv-recreation-in-gtav-engine-looks-amazing-with-reshade-ray-tracing-and-awesomekills-graphics-mod%2F&psig=AOvVaw0qRmFSH8Wu6WaYsLr_g1bR&ust=1706405975276000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOjw7eG3_IMDFQAAAAAdAAAAABAD 
+//Call of Duty:Black Ops II- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.kinguin.net%2Fcategory%2F153581%2Fcall-of-duty-black-ops-ii-steam-account&psig=AOvVaw2_WzkBskLiJrs1_ae7SR_1&ust=1706405986969000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJDKrOe3_IMDFQAAAAAdAAAAABAD 
+//FIFA 18- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.gq.com%2Fstory%2Ffifa-18-review&psig=AOvVaw1vxqYuYbg7jnVfFWsr2Yg8&ust=1706406001362000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJiFu-63_IMDFQAAAAAdAAAAABAD 
+//Sonic the Hedgehog- https://www.google.com/url?sa=i&url=https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3DyyLK_R9sYJU&psig=AOvVaw1B6nhvEfZ2N36EzXG_IGi7&ust=1706406015085000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLCc8vS3_IMDFQAAAAAdAAAAABAD 
+//Call of Duty: Modern Warfare 2- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dexerto.com%2Fcall-of-duty%2Fwarzone-2-mw2-devs-finally-address-ongoing-server-issues-2120760%2F&psig=AOvVaw2GDsS2uS7nRvhJdC9aPqdL&ust=1706406029136000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNCntP23_IMDFQAAAAAdAAAAABAD 
+//Borderlands 2- https://www.google.com/url?sa=i&url=https%3A%2F%2Farstechnica.com%2Fgaming%2F2012%2F09%2Freview-borderlands-2-sure-does-provide-more-borderlands-all-right%2F&psig=AOvVaw2kzXBa4U5ghrjdxwZHfoAX&ust=1706406061021000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLi82Yu4_IMDFQAAAAAdAAAAABAD 
+//Super Mario World- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.ebay.com%2Fitm%2F255103093425&psig=AOvVaw32GOFiFNqFe291zLFKzRUn&ust=1706406078113000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCIjVvpO4_IMDFQAAAAAdAAAAABAD 
+//Frogger- https://www.google.com/url?sa=i&url=http%3A%2F%2Fwww.classicgaming.cc%2Fclassics%2Ffrogger%2Fabout&psig=AOvVaw0-SGP0E-yUznsMmgIDASR8&ust=1706406097409000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNiHwpy4_IMDFQAAAAAdAAAAABAD 
+//Lemmings- https://www.google.com/url?sa=i&url=https%3A%2F%2Fclassicreload.com%2Flemmings.html&psig=AOvVaw01FKYVH1Je2eUn7MYmwXhu&ust=1706406113979000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLD9kqW4_IMDFQAAAAAdAAAAABAD 
+//Grand Theft Auto: Vice City- https://www.google.com/url?sa=i&url=https%3A%2F%2Fgamingbolt.com%2Fgta-the-trilogy-the-definitive-edition-could-be-getting-new-fixes-on-pc-soon-rumour&psig=AOvVaw39Cs-F7lOkWPPG5KH-CAsH&ust=1706406127508000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCODK4qq4_IMDFQAAAAAdAAAAABAD 
+//Super Mario Bros 3-https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DNa8rqq47gi0&psig=AOvVaw1A8gYRTtmRb8pRsn4sNa49&ust=1706406140591000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCJi43rC4_IMDFQAAAAAdAAAAABAD 
+//Call of Duty: Ghosts- https://www.google.com/url?sa=i&url=https%3A%2F%2Fstore.playstation.com%2Fen-no%2Fproduct%2FEP0002-CUSA00025_00-GHOSTSEXTINSQUAD&psig=AOvVaw0e1TVsvjkOFLKVLf6iA6PI&ust=1706406151307000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPCGyLW4_IMDFQAAAAAdAAAAABAD 
+//Super Mario Land- https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.denofgeek.com%2Fgames%2Fsuper-mario-land-underrated-classic%2F&psig=AOvVaw2CZsOPB4fH0gjQPxqwJDpi&ust=1706406160530000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOivyLq4_IMDFQAAAAAdAAAAABAD 
