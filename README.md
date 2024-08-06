@@ -8,4 +8,5 @@ Used JavaScript to code an app that allows users to look through the Most Sold M
 ![videoGame2](https://github.com/user-attachments/assets/d98b28e7-ffad-41a4-a6bb-4c614a9658d5)
 ![videoGame2Description](https://github.com/user-attachments/assets/72354da5-079e-48da-a41a-afd370f49a9c)
 
-
+# Credits
+Steven Cao for making the descriptions for the games and helping with some of the code
